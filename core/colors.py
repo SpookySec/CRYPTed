@@ -25,6 +25,9 @@ def gray(string):
 def white(string):
     return "\033[97m%s\033[0m" % string
 
+def message(symbol, message):
+    print(gray("[") + red(symbol) + gray("] ") + gray(message))
+
 def help(command, requirement):
-    print(gray("[") + red("!") + gray("] ") + gray("Command Error!"))
-    print(gray("[") + red("!") + gray("] ") + red(command) + " " + yellow(requirement))
+    # print(gray("[") + red("!") + gray("] ") + gray("Command Error!"))
+    print(gray("[") + red("!") + gray("] ") + red(command) + " " + gray("<") + red(requirement) + gray(">"))
