@@ -20,7 +20,7 @@ while True:
             if cmd.split()[0] == "hash-id":
                 argv = cmd.split()
                 if len(argv) < 2:
-                    help("hash-id",  "<hash>")
+                    help("hash-id", "<hash>")
 
     except Exception as e:
         print(e)
