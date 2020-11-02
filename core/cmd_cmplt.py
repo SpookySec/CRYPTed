@@ -2,7 +2,7 @@ import os
 import readline
 import glob
 
-commands = ["clear", "banner", "help", "exit", "hash-id"]
+commands = ["update", "whoami", "clear", "banner", "help", "exit", "hash-id", "base32", "base58", "base64"]
 
 def completer(text, state):
     options = [i for i in commands if i.startswith(text)]

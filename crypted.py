@@ -2,19 +2,21 @@
 import os
 import platform
 
-
 # CORE
-from core import banner
+from core.banner import banner
 from core.colors import *
 from core.cmd_cmplt import PathComplete, CommandComplete, commands
+from core.loading import load
+from core.update import update
+
 
 # MODULES
 from modules import hash_id
-
-
+from modules.bases import *
 
 fbanner = open("core/banner.txt")
-banner.banner(fbanner, 0.1)
+banner(fbanner, 0.05)
+fbanner.close()
 
 while True:
     try:
@@ -43,11 +45,55 @@ while True:
                     else:
                         message("*", "No Hashes Matched!")
             
-            if cmd.split()[0] == "magic":
+            # BASE 32
+            if cmd.split()[0] == "base32":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("magic", "cipher string")
+                    help("base32", "encoded string")
+
+                else:
+                    try:
+                        message("+", debase32(argv[1]))
+                    except base64.binascii.Error:
+                        message("!", "Doesn't Look Like base32")
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
+            
+            # BASE 58
+            if cmd.split()[0] == "base58":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("base58", "encoded string")
+
+                else:
+                    try:
+                        message("+", debase58(argv[1]))
+                    except UnicodeDecodeError:
+                        message("!", "Doesn't Look Like base58")
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
+            
+            # BASE 64
+            if cmd.split()[0] == "base64":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("base64", "encoded string")
+
+                else:
+                    try:
+                        message("+", debase64(argv[1]))
+                    except base64.binascii.Error:
+                        message("!", "Doesn't Look Like base64")
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
+
+
+            # AUTHOR
+            if cmd.split()[0] == "whoami":
+                message("~", "Made By " + red("@") + gray("spooky_sec"))
 
             # CLEAR
             if cmd.split()[0] == "clear":
@@ -55,13 +101,23 @@ while True:
 
             # BANNER
             if cmd.split()[0] == "banner":
-                banner.banner(fbanner, 0)
+                fbanner = open("core/banner.txt")
+                banner(fbanner, 0)
+                fbanner.close()
+
+            # UPDATE
+            if cmd.split()[0] == "update":
+                message("+", red("Response: ") + gray(update()))
             
+            # EXIT
+            if cmd.split()[0] == "exit":
+                message("~", "Bye :3")
+                exit(0)
 
             # COMMAND NOT FOUND
             if cmd.split()[0] not in commands:
-                message("!", gray("Use \"") + red("help") + gray("\" to list available commands"))
+                message("!", gray("Use \"") + red("help") + gray("\" To List Available Commands"))
                     
 
     except Exception as e:
-        print(e)
+        print(e.with_traceback())
