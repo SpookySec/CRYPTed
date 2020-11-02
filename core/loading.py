@@ -39,5 +39,8 @@ def load(string, iterations):
         cursor.hide()
         animate(Spinners.bouncingBar.value["frames"], Spinners.bouncingBar.value["interval"], string, iterations=iterations)
         print('\n')
+        sys.stdout.write("\033[F")
+        sys.stdout.write("\033[F")
+        sys.stdout.write(CLEAR_LINE)
     finally:
-        cursor.show()   
+        cursor.show()  

@@ -16,6 +16,7 @@ from modules import hash_id
 from modules.bases import debase32, debase58, debase64
 from modules.rots import *
 from modules.hex import decode_hex
+from modules.vigenere import decode_vigenere
 
 fbanner = open("core/banner.txt")
 banner(fbanner, 0.05)
@@ -57,6 +58,7 @@ while True:
                     if len(results) > 0:
                         count = 0
                         
+                        load(gray("Parsing Hashes"), 3)
                         for hashtype in results:
                             count += 1
                             message(count, hashtype)
