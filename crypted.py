@@ -15,6 +15,7 @@ from core.update import update
 from modules import hash_id
 from modules.bases import debase32, debase58, debase64
 from modules.rots import *
+from modules.hex import decode_hex
 
 fbanner = open("core/banner.txt")
 banner(fbanner, 0.05)
@@ -27,12 +28,28 @@ while True:
 
         if cmd != "":
 
-            # HASH-ID
-            if cmd.split()[0] == "hash-id":
+            # DECODE HEX
+            if cmd.split()[0] == "hex":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("hash-id", "hash")
+                    help("hex", "hex string")
+                
+                else:
+                    try:
+                        message("+", decode_hex(argv[1]))
+                    except ValueError:
+                        message("!", "Doesn't Look Like Hex")
+                        message("!", red("Format: ") + gray("41414141"))
+                    except Exception as e:
+                        print(e.with_traceback())
+
+            # HASH-ID
+            if cmd.split()[0] == "hash-identifier":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("hash-identifier", "hash")
                 else:
                     hashid = hash_id.HashID()
                     results = hash_id.parseHashes(hashid.identifyHash(argv[1]))

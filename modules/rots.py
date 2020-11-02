@@ -13,7 +13,3 @@ def rot47(string):
         else:
             x.append(string[i])
     return ''.join(x)
-
-
-print(rot13("hello"))
-print(rot47("hello"))
