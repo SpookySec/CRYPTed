@@ -1,6 +1,7 @@
 # LIBS
 import os
 import platform
+import base64
 
 # CORE
 from core.banner import banner
@@ -12,7 +13,7 @@ from core.update import update
 
 # MODULES
 from modules import hash_id
-from modules.bases import *
+from modules.bases import debase32, debase58, debase64
 
 fbanner = open("core/banner.txt")
 banner(fbanner, 0.05)
@@ -43,7 +44,7 @@ while True:
                             message(count, hashtype)
                     
                     else:
-                        message("*", "No Hashes Matched!")
+                        message("!", "No Hashes Matched!")
             
             # BASE 32
             if cmd.split()[0] == "base32":
@@ -70,7 +71,7 @@ while True:
                 else:
                     try:
                         message("+", debase58(argv[1]))
-                    except UnicodeDecodeError:
+                    except (UnicodeDecodeError, ValueError):
                         message("!", "Doesn't Look Like base58")
                     except:
                         message("!", "An Unknown Error Has Occurred!")
