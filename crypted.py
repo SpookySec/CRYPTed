@@ -6,7 +6,7 @@ import base64
 # CORE
 from core.banner import banner
 from core.colors import *
-from core.cmd_cmplt import PathComplete, CommandComplete, commands
+from core.cmd_cmplt import PathComplete, CommandComplete, HistoryClear, commands
 from core.loading import load
 from core.update import update
 
@@ -99,6 +99,7 @@ while True:
             # CLEAR
             if cmd.split()[0] == "clear":
                 os.system("clear")
+                HistoryClear()
 
             # BANNER
             if cmd.split()[0] == "banner":
