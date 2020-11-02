@@ -14,6 +14,7 @@ from core.update import update
 # MODULES
 from modules import hash_id
 from modules.bases import debase32, debase58, debase64
+from modules.rots import *
 
 fbanner = open("core/banner.txt")
 banner(fbanner, 0.05)
@@ -91,7 +92,20 @@ while True:
                     except:
                         message("!", "An Unknown Error Has Occurred!")
 
+            # ROT13
+            if cmd.split()[0] == "rot13":
+                argv = cmd.split()
 
+                if len(argv) < 2:
+                    help("rot13", "shifted string")
+                
+                else:
+                    try:
+                        message("+", rot13(argv[1]))
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
+
+            
             # AUTHOR
             if cmd.split()[0] == "whoami":
                 message("~", "Made By " + red("@") + gray("spooky_sec"))
