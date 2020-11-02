@@ -15,7 +15,7 @@ banner.banner(fbanner, 0.1)
 while True:
     try:
         CommandComplete()
-        cmd = input(red("crypted") + gray(blink(" » ")))
+        cmd = input(red("crypted") + gray(" » "))
 
         if cmd != "":
 
