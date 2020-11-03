@@ -11,7 +11,6 @@ from core.loading import load
 from core.update import update
 from core.help import help_message
 
-
 # MODULES
 from modules import hash_id
 from modules.bases import debase32, debase58, debase64
@@ -19,6 +18,7 @@ from modules.rots import rot13, rot47
 from modules.hex import decode_hex
 from modules.vigenere import decode_vigenere
 from modules.url import url_decode
+from modules.morse import morse_decode
 
 fbanner = open("core/banner.txt")
 banner(fbanner, 0.05)
@@ -159,6 +159,22 @@ while True:
                         message("+", rot47(argv[1]))
                     except:
                         message("!", "An Unknown Error Has Occurred!")
+
+            # MORSE
+            if cmd.split()[0] == "morse-decode":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("morse-decode", "morse code")
+                
+                else:
+                    try:
+                        message("+", morse_decode(argv[1:]))
+                    except Exception as e:
+                        print(e.with_traceback())
+                        message("!", "An Unknown Error Has Occurred!")
+                        message("*", red("Format") + gray(": .... . .-.. .-.. ---"))
+
 
             # HELP
             if cmd.split()[0] == "help":
