@@ -14,5 +14,8 @@
     {"description": "turns hex into ascii", "name": "hex"},
     {"description": "deciphers vigenere ciphers", "name": "vigenere"},
     {"description": "decodes URLs", "name": "url-decode"},
-    {"description": "decipher morse code", "name": "morse-decode"}
+    {"description": "decipher morse code", "name": "morse-decode"},
+    {"description": "decodes UTF-8 strings", "name": "utf-8"},
+    {"description": "converts a string into NATO alphabet", "name": "nato"},
+    {"description": "converts octal to ascii", "name": "octal"}
 ]

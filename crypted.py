@@ -18,6 +18,9 @@ from modules.hex import decode_hex
 from modules.vigenere import decode_vigenere
 from modules.url import url_decode
 from modules.morse import morse_decode
+from modules.utf import utf_decode
+from modules.nato import convert_nato
+from modules.octal import decode_octal
 
 fbanner = open("core/banner.txt")
 banner(fbanner, 0.05)
@@ -30,13 +33,46 @@ while True:
 
         if cmd != "":
 
+            # OCTAL
+            if cmd.split()[0] == "octal":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("octal", "octal strings")
+                else:
+                    try:
+                        octal_strings = argv[1:]
+                        message("+", decode_octal(octal_strings))
+                    except ValueError:
+                        message("!", "Takes Numbers Only")
+                        message("*", red("Format") + gray(": 150 145 154 154 157"))
+                    except:
+                        message("!", "An Unknown Error Has Occrred!")
+                        message("*", red("Format") + gray(": 150 145 154 154 157"))
+
+            # NATO
+            if cmd.split()[0] == "nato":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("nato", "ascii string")
+                else:
+                    try:
+                        word = convert_nato(argv[1])
+                        if not word:
+                            message("!", "Can't Convert These Characters")
+                        for letter in word:
+                            message("+", letter)
+                    except:
+                        message("!", "An Unknown Error Has Occrred!")
+            
+
             # URL DECODE
             if cmd.split()[0] == "url-decode":
                 argv = cmd.split()
 
                 if len(argv) < 2:
                     help("url-decode", "URL")
-                
                 else:
                     message("+", url_decode(argv[1]))
 
@@ -175,11 +211,25 @@ while True:
                         cipher = cipher.strip()
                         message("+", morse_decode(cipher))
                     except ValueError:
-                        message("+", "Ay, That Ain't No Valid Letter")
+                        message("!", "Ay, That Ain't No Valid Letter")
                     except Exception as e:
                         print(e.with_traceback())
                         message("!", "An Unknown Error Has Occurred!")
                         message("*", red("Format") + gray(": .... . .-.. .-.. ---"))
+            
+            # UTF-8
+            if cmd.split()[0] == "utf-8":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("utf-8", "text")
+
+                else:
+                    try:
+                        message("+", utf_decode(argv[1]))
+                    except Exception as e:
+                        message("!", "An Unknown Error Has Occurred!")
+                        print(e.with_traceback())
 
 
             # HELP
