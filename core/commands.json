@@ -1,6 +1,5 @@
 [
     {"description": "clears command history", "name": "reset"},
-    {"description": "runs git pull", "name": "update"},
     {"description": ":)", "name": "whoami"},
     {"description": "clears the screen", "name": "clear"},
     {"description": "prints the most beautiful banner ever", "name": "banner"},
