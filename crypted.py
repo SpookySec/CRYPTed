@@ -174,6 +174,8 @@ while True:
                             cipher += char
                         cipher = cipher.strip()
                         message("+", morse_decode(cipher))
+                    except ValueError:
+                        message("+", "Ay, That Ain't No Valid Letter")
                     except Exception as e:
                         print(e.with_traceback())
                         message("!", "An Unknown Error Has Occurred!")
