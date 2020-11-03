@@ -24,7 +24,7 @@ if sys.version_info.major == 2:
 else:
     get_coded_text = decode_utf_8_text
 
-def animate(frames, interval, name, iterations=2):
+def animate(frames, interval, name, iterations=4):
     for i in range(iterations):
         for frame in frames:
             frame = get_coded_text(frame)
@@ -34,13 +34,10 @@ def animate(frames, interval, name, iterations=2):
             sys.stdout.flush()
             time.sleep(0.001 * interval)
 
-def load(string, iterations):
+def load(string):
     try:
         cursor.hide()
-        animate(Spinners.bouncingBar.value["frames"], Spinners.bouncingBar.value["interval"], string, iterations=iterations)
+        animate(Spinners.dots.value["frames"], Spinners.dots.value["interval"], string)
         print('\n')
-        sys.stdout.write("\033[F")
-        sys.stdout.write("\033[F")
-        sys.stdout.write(CLEAR_LINE)
     finally:
-        cursor.show()  
+        cursor.show()

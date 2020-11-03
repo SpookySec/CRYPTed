@@ -29,6 +29,18 @@ while True:
 
         if cmd != "":
 
+            # VIGENERE
+            if cmd.split()[0] == "vigenere":
+                argv = cmd.split()
+
+                if len(argv) < 3:
+                    print(gray("[") + red("!") + gray("] ") + red("vigenere") + " " + gray("<") + red("key") + gray(">")+ " " + gray("<") + red("ciphered text") + gray(">"))
+
+                else:
+                    try:
+                        message("+", decode_vigenere(argv[2], argv[1]))
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
             # DECODE HEX
             if cmd.split()[0] == "hex":
                 argv = cmd.split()
@@ -58,7 +70,6 @@ while True:
                     if len(results) > 0:
                         count = 0
                         
-                        load(gray("Parsing Hashes"), 3)
                         for hashtype in results:
                             count += 1
                             message(count, hashtype)
