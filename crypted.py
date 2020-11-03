@@ -44,7 +44,7 @@ while True:
                         octal_strings = argv[1:]
                         message("+", decode_octal(octal_strings))
                     except ValueError:
-                        message("!", "Takes Numbers Only")
+                        message("!", "Make Sure You're Using Octal Numbers!")
                         message("*", red("Format") + gray(": 150 145 154 154 157"))
                     except:
                         message("!", "An Unknown Error Has Occrred!")
