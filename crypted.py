@@ -8,7 +8,6 @@ from core.banner import banner
 from core.colors import red, gray, message, help
 from core.cmd_cmplt import PathComplete, CommandComplete, HistoryClear, commands
 from core.loading import load
-from core.update import update
 from core.help import help_message
 
 # MODULES
@@ -202,14 +201,6 @@ while True:
                 fbanner = open("core/banner.txt")
                 banner(fbanner, 0)
                 fbanner.close()
-
-            # UPDATE
-            if cmd.split()[0] == "update":
-                try:
-                    update()
-                    message("+", "Updated Successfully")
-                except:
-                    message("!", "An Error Has Occurred!")
             
             # EXIT
             if cmd.split()[0] == "exit":
