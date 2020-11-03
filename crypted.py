@@ -5,7 +5,7 @@ import base64
 
 # CORE
 from core.banner import banner
-from core.colors import *
+from core.colors import red, gray, message, help
 from core.cmd_cmplt import PathComplete, CommandComplete, HistoryClear, commands
 from core.loading import load
 from core.update import update
@@ -14,9 +14,10 @@ from core.update import update
 # MODULES
 from modules import hash_id
 from modules.bases import debase32, debase58, debase64
-from modules.rots import *
+from modules.rots import rot13, rot47
 from modules.hex import decode_hex
 from modules.vigenere import decode_vigenere
+from modules.url import url_decode
 
 fbanner = open("core/banner.txt")
 banner(fbanner, 0.05)
@@ -28,6 +29,16 @@ while True:
         cmd = input(red("crypted") + gray(" » "))
 
         if cmd != "":
+
+            # URL DECODE
+            if cmd.split()[0] == "url-decode":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("url-decode", "URL")
+                
+                else:
+                    message("+", url_decode(argv[1]))
 
             # VIGENERE
             if cmd.split()[0] == "vigenere":
@@ -134,6 +145,19 @@ while True:
                         message("+", rot13(argv[1]))
                     except:
                         message("!", "An Unknown Error Has Occurred!")
+            
+            # ROT47
+            if cmd.split()[0] == "rot47":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("rot47", "shifted string")
+
+                else:
+                    try:
+                        message("+", rot47(argv[1]))
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
 
             
             # AUTHOR
@@ -143,6 +167,9 @@ while True:
             # CLEAR
             if cmd.split()[0] == "clear":
                 os.system("clear")
+            
+            # RESET
+            if cmd.split()[0] == "reset":
                 HistoryClear()
 
             # BANNER
@@ -153,7 +180,11 @@ while True:
 
             # UPDATE
             if cmd.split()[0] == "update":
-                message("+", red("Response: ") + gray(update()))
+                try:
+                    update()
+                    message("+", "Updated Successfully")
+                except:
+                    message("!", "An Error Has Occurred!")
             
             # EXIT
             if cmd.split()[0] == "exit":
@@ -165,5 +196,10 @@ while True:
                 message("!", gray("Use \"") + red("help") + gray("\" To List Available Commands"))
                     
 
-    except Exception as e:
+    except KeyboardInterrupt:
+        print()
+        message("!", "Please Use \"" + red("exit") + gray("\" To Exit"))
+        continue
+
+    except Exception as e:    
         print(e.with_traceback())
