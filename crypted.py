@@ -9,6 +9,7 @@ from core.colors import red, gray, message, help
 from core.cmd_cmplt import PathComplete, CommandComplete, HistoryClear, commands
 from core.loading import load
 from core.update import update
+from core.help import help_message
 
 
 # MODULES
@@ -159,7 +160,10 @@ while True:
                     except:
                         message("!", "An Unknown Error Has Occurred!")
 
-            
+            # HELP
+            if cmd.split()[0] == "help":
+                help_message()
+
             # AUTHOR
             if cmd.split()[0] == "whoami":
                 message("~", "Made By " + red("@") + gray("spooky_sec"))

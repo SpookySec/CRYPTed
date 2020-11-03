@@ -1,0 +1,18 @@
+[
+    {"description": "clears command history", "name": "reset"},
+    {"description": "runs git pull", "name": "update"},
+    {"description": ":)", "name": "whoami"},
+    {"description": "clears the screen", "name": "clear"},
+    {"description": "prints the most beautiful banner ever", "name": "banner"},
+    {"description": "prints this list", "name": "help"},
+    {"description": "exits CRYPTed", "name": "exit"},
+    {"description": "identifies the type of a hash", "name": "hash-identifier"},
+    {"description": "decodes base32", "name": "base32"},
+    {"description": "decodes base58", "name": "base58"},
+    {"description": "decodes base64", "name": "base64"},
+    {"description": "shifts 13 characters", "name": "rot13"},
+    {"description": "shifts 47 characters", "name": "rot47"},
+    {"description": "turns hex into ascii", "name": "hex"},
+    {"description": "deciphers vigenere ciphers", "name": "vigenere"},
+    {"description": "decodes URLs", "name": "url-decode"}
+]

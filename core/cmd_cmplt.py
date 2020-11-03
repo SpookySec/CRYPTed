@@ -1,8 +1,13 @@
 import os
 import readline
 import glob
+import json
 
-commands = ["reset", "update", "whoami", "clear", "banner", "help", "exit", "hash-identifier", "base32", "base58", "base64", "rot13", "rot47", "hex", "vigenere", "url-decode"]
+commands = []
+file = json.load(open("core/commands.json"))
+for cmd in file:
+    commands.append(cmd["name"])
+
 
 def completer(text, state):
     options = [i for i in commands if i.startswith(text)]
