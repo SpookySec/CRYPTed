@@ -169,7 +169,12 @@ while True:
                 
                 else:
                     try:
-                        message("+", morse_decode(argv[1:]))
+                        cipher = ""
+                        for char in argv[1:]:
+                            cipher += " "
+                            cipher += char
+                        cipher = cipher.strip()
+                        message("+", morse_decode(cipher))
                     except Exception as e:
                         print(e.with_traceback())
                         message("!", "An Unknown Error Has Occurred!")
