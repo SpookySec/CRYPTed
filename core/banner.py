@@ -24,5 +24,4 @@ def banner(amount):
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(amount)
-
-banner(0)
+        
