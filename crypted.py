@@ -218,6 +218,7 @@ while True:
                         message("+", morse_decode(cipher))
                     except ValueError:
                         message("!", "Ay, That Ain't No Valid Letter")
+                        message("*", red("Format") + gray(": .... . .-.. .-.. ---"))
                     except Exception as e:
                         print(e.with_traceback())
                         message("!", "An Unknown Error Has Occurred!")
