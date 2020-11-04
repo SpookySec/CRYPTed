@@ -17,5 +17,6 @@
     {"description": "decipher morse code", "name": "morse-decode"},
     {"description": "decodes UTF-8 strings", "name": "utf-8-decode"},
     {"description": "converts a string into NATO alphabet", "name": "nato"},
-    {"description": "converts octal to ascii", "name": "octal"}
+    {"description": "converts octal to ascii", "name": "octal"},
+    {"description": "decodes netBIOS names", "name": "netbios-decode"}
 ]

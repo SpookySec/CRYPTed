@@ -25,6 +25,7 @@ try:
     from modules.utf import utf_decode
     from modules.nato import convert_nato
     from modules.octal import decode_octal
+    from modules.netbios import decode_netbios
 
 except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
@@ -38,6 +39,18 @@ while True:
         cmd = input(red("crypted") + gray(" » "))
 
         if cmd != "":
+
+            # NET BIOS
+            if cmd.split()[0] == "netbios-decode":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("netbios-decode", "name")
+                else:
+                    try:
+                        message("+", decode_netbios(argv[1].strip()))
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
 
             # OCTAL
             if cmd.split()[0] == "octal":
