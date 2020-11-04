@@ -1,25 +1,34 @@
 # LIBS
 import os
 import platform
-import base64
+if platform.system() != "Linux":
+    print("[!] Sorry This Tool Is Meant To Be Run On Linux :/")
+    exit(0)
 
-# CORE
-from core.banner import banner
-from core.colors import red, gray, message, help
-from core.cmd_cmplt import PathComplete, CommandComplete, HistoryClear, commands
-from core.help import help_message
+try:
+    # CORE
+    from core.banner import banner
+    from core.colors import red, gray, message, help
+    from core.cmd_cmplt import PathComplete, CommandComplete, HistoryClear, commands
+    from core.help import help_message
 
-# MODULES
-from modules import hash_id
-from modules.bases import debase32, debase58, debase64
-from modules.rots import rot13, rot47
-from modules.hex import decode_hex
-from modules.vigenere import decode_vigenere
-from modules.url import url_decode
-from modules.morse import morse_decode
-from modules.utf import utf_decode
-from modules.nato import convert_nato
-from modules.octal import decode_octal
+    import base64
+    
+    # MODULES
+    from modules import hash_id
+    from modules.bases import debase32, debase58, debase64
+    from modules.rots import rot13, rot47
+    from modules.hex import decode_hex
+    from modules.vigenere import decode_vigenere
+    from modules.url import url_decode
+    from modules.morse import morse_decode
+    from modules.utf import utf_decode
+    from modules.nato import convert_nato
+    from modules.octal import decode_octal
+
+except ModuleNotFoundError:
+    message("!", "Please Run 'install.sh'!")
+    exit(1)
 
 banner(0.008)
 
