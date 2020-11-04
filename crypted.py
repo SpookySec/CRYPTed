@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # LIBS
 import os
 import platform
