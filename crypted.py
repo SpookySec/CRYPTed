@@ -28,6 +28,7 @@ try:
     from modules.octal import decode_octal
     from modules.netbios import decode_netbios
     from modules.binary import decode_binary
+    from modules.reverse import reverse_string
 
 except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
@@ -42,6 +43,18 @@ while True:
 
         if cmd != "":
 
+            # REVERSE STRING
+            if cmd.split()[0] == "reverse-string":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("reverse-string", "string")
+                else:
+                    try:
+                        message("+", reverse_string(argv[1]))
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
+                        
             # NET BIOS
             if cmd.split()[0] == "binary-convert":
                 argv = cmd.split()
