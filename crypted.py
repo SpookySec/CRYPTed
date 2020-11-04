@@ -89,11 +89,11 @@ while True:
                     except:
                         message("!", "An Unknown Error Has Occurred!")
             # DECODE HEX
-            if cmd.split()[0] == "hex":
+            if cmd.split()[0] == "hex-decode":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("hex", "hex string")
+                    help("hex-decode", "hex string")
                 
                 else:
                     try:
@@ -125,11 +125,11 @@ while True:
                         message("!", "No Hashes Matched!")
             
             # BASE 32
-            if cmd.split()[0] == "base32":
+            if cmd.split()[0] == "base32-decode":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("base32", "encoded string")
+                    help("base32-decode", "encoded string")
 
                 else:
                     try:
@@ -140,11 +140,11 @@ while True:
                         message("!", "An Unknown Error Has Occurred!")
             
             # BASE 58
-            if cmd.split()[0] == "base58":
+            if cmd.split()[0] == "base58-decode":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("base58", "encoded string")
+                    help("base58-decode", "encoded string")
 
                 else:
                     try:
@@ -155,11 +155,11 @@ while True:
                         message("!", "An Unknown Error Has Occurred!")
             
             # BASE 64
-            if cmd.split()[0] == "base64":
+            if cmd.split()[0] == "base64-decode":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("base64", "encoded string")
+                    help("base64-decode", "encoded string")
 
                 else:
                     try:
@@ -170,11 +170,11 @@ while True:
                         message("!", "An Unknown Error Has Occurred!")
 
             # ROT13
-            if cmd.split()[0] == "rot13":
+            if cmd.split()[0] == "rot13-decode":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("rot13", "shifted string")
+                    help("rot13-decode", "shifted string")
                 
                 else:
                     try:
@@ -187,7 +187,7 @@ while True:
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("rot47", "shifted string")
+                    help("rot47-decode", "shifted string")
 
                 else:
                     try:
@@ -218,11 +218,11 @@ while True:
                         message("*", red("Format") + gray(": .... . .-.. .-.. ---"))
             
             # UTF-8
-            if cmd.split()[0] == "utf-8":
+            if cmd.split()[0] == "utf-8-decode":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("utf-8", "text")
+                    help("utf-8-decode", "text")
 
                 else:
                     try:
