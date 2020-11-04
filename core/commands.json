@@ -11,6 +11,7 @@
     {"description": "decodes base64", "name": "base64-decode"},
     {"description": "decodes rot-13", "name": "rot13-decode"},
     {"description": "decodes rot-47", "name": "rot47-decode"},
+    {"description": "convert binary into ascii", "name":"binary-convert"},
     {"description": "turns hex into ascii", "name": "hex-decode"},
     {"description": "deciphers vigenere ciphers", "name": "vigenere"},
     {"description": "decodes URLs", "name": "url-decode"},
@@ -18,6 +19,6 @@
     {"description": "decodes UTF-8 strings", "name": "utf-8-decode"},
     {"description": "converts a string into NATO alphabet", "name": "nato"},
     {"description": "converts octal to ascii", "name": "octal"},
-    {"description": "decodes netBIOS names", "name": "netbios-decode"},
-    {"description": "convert binary into ascii", "name":"binary-convert"}
+    {"description": "decodes netBIOS names", "name": "netbios-decode"}
+    
 ]

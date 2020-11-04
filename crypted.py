@@ -33,7 +33,7 @@ except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
     exit(1)
 
-banner(0.005)
+banner(0.003)
 
 while True:
     try:
