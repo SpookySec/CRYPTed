@@ -27,6 +27,7 @@ try:
     from modules.nato import convert_nato
     from modules.octal import decode_octal
     from modules.netbios import decode_netbios
+    from modules.binary import decode_binary
 
 except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
@@ -40,6 +41,25 @@ while True:
         cmd = input(red("crypted") + gray(" » "))
 
         if cmd != "":
+
+            # NET BIOS
+            if cmd.split()[0] == "binary-convert":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("binary-convert", "binary number")
+                else:
+                    try:
+                        message("+", decode_binary(argv[1:]))
+                    except ValueError:
+                        message("!", "Binary Is Only 1s And 0s")
+                        message("*", red("Format") + gray(": 01101000 01101001"))
+                    except OverflowError:
+                        message("!", "That Number Was Greater Than Maximum")
+                        message("*", red("Format") + gray(": 01101000 01101001"))
+                    except Exception as e:
+                        print(e.with_traceback())
+                        message("!", "An Unknown Error Has Occurred!")
 
             # NET BIOS
             if cmd.split()[0] == "netbios-decode":

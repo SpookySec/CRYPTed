@@ -18,5 +18,6 @@
     {"description": "decodes UTF-8 strings", "name": "utf-8-decode"},
     {"description": "converts a string into NATO alphabet", "name": "nato"},
     {"description": "converts octal to ascii", "name": "octal"},
-    {"description": "decodes netBIOS names", "name": "netbios-decode"}
+    {"description": "decodes netBIOS names", "name": "netbios-decode"},
+    {"description": "convert binary into ascii", "name":"binary-convert"}
 ]

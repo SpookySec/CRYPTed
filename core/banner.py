@@ -15,7 +15,7 @@ banner_text = f"""
 {red("██║     ") + gray(r"   / ___/ / / / __ |/ __/ _ |/ __  / ")}
 {red("██║     ") + gray(r"  / /  / /_/ / /_/ / /_/  __/ /_/ /  ")}
 {red("╚██████╗") + gray(r" /_/   |__, / .___/|__/|___/|__,_/   ")}
-{red(" ╚═════╝") + gray(r"    /____/_/            ")}
+{red(" ╚═════╝") + gray(r"    /____/_/                         ")}
 {"                                     " + message("@", red("spooky_sec"))}
 \n"""
 
@@ -24,4 +24,3 @@ def banner(amount):
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(amount)
-        
