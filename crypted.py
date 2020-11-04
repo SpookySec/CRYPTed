@@ -7,7 +7,6 @@ import base64
 from core.banner import banner
 from core.colors import red, gray, message, help
 from core.cmd_cmplt import PathComplete, CommandComplete, HistoryClear, commands
-from core.loading import load
 from core.help import help_message
 
 # MODULES
@@ -22,9 +21,7 @@ from modules.utf import utf_decode
 from modules.nato import convert_nato
 from modules.octal import decode_octal
 
-fbanner = open("core/banner.txt")
-banner(fbanner, 0.05)
-fbanner.close()
+banner(0.008)
 
 while True:
     try:
@@ -250,9 +247,7 @@ while True:
 
             # BANNER
             if cmd.split()[0] == "banner":
-                fbanner = open("core/banner.txt")
-                banner(fbanner, 0)
-                fbanner.close()
+                banner(0)
             
             # EXIT
             if cmd.split()[0] == "exit":
