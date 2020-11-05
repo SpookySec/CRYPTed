@@ -51,7 +51,12 @@ while True:
                 if len(argv) < 2:
                     help("decimal-convert", "decimal string")
                 else:
-                    message("!", decode_decimal(argv[1:]))
+                    try:
+                        message("+", decode_decimal(argv[1:]))
+                    except ValueError:
+                        message("!", "Only Takes Decimal Values")
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
 
             # REVERSE STRING
             if cmd.split()[0] == "reverse-string":
