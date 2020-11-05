@@ -21,5 +21,7 @@
     {"description": "converts octal to ascii", "name": "octal"},
     {"description": "decodes netBIOS names", "name": "netbios-decode"},
     {"description": "reverses a given string", "name": "reverse-string"},
-    {"description": "converts decimal to ascii", "name": "decimal-convert"}
+    {"description": "converts decimal to ascii", "name": "decimal-convert"},
+    {"description": "converts a string into braille", "name": "string-to-braille"},
+    {"description": "converts braille to ascii", "name": "braille-to-string"}
 ]

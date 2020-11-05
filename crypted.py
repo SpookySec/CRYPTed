@@ -30,6 +30,7 @@ try:
     from modules.binary import decode_binary
     from modules.reverse import reverse_string
     from modules.decimal import decode_decimal
+    from modules.braille import ascii, braille
 
 except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
@@ -43,6 +44,36 @@ while True:
         cmd = input(red("crypted") + gray(" » "))
 
         if cmd != "":
+
+            # STRING TO BRAILLE
+            if cmd.split()[0] == "string-to-braille":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("string-to-braille", "ascii string")
+                else:
+                    try:
+                        message("+", braille("  ".join(argv[1:])))
+                    except ValueError:
+                        message("!", "A Char Is Not Registered")
+                    except Exception as e:
+                        message("!", "An Unknown Error Has Occurred!")
+                        print(e.with_traceback())
+            
+            # BRAILLE TO ASCII
+            if cmd.split()[0] == "braille-to-string":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("braille-to-string", "braille string")
+                else:
+                    try:
+                        message("+", ascii(" ".join(argv[1:])))
+                    except ValueError:
+                        message("!", "A Char Is Not Registered")
+                    except Exception as e:
+                        message("!", "An Unknown Error Has Occurred!")
+                        print(e.with_traceback())
 
             # DECIMAL
             if cmd.split()[0] == "decimal-convert":
