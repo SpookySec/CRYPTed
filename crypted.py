@@ -29,6 +29,7 @@ try:
     from modules.netbios import decode_netbios
     from modules.binary import decode_binary
     from modules.reverse import reverse_string
+    from modules.decimal import decode_decimal
 
 except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
@@ -42,6 +43,15 @@ while True:
         cmd = input(red("crypted") + gray(" » "))
 
         if cmd != "":
+
+            # DECIMAL
+            if cmd.split()[0] == "decimal-convert":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("decimal-convert", "decimal string")
+                else:
+                    message("!", decode_decimal(argv[1:]))
 
             # REVERSE STRING
             if cmd.split()[0] == "reverse-string":
@@ -236,7 +246,7 @@ while True:
                         message("!", "An Unknown Error Has Occurred!")
             
             # ROT47
-            if cmd.split()[0] == "rot47":
+            if cmd.split()[0] == "rot47-decode":
                 argv = cmd.split()
 
                 if len(argv) < 2:
