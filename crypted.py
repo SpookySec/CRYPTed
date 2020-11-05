@@ -30,7 +30,7 @@ try:
     from modules.binary import decode_binary
     from modules.reverse import reverse_string
     from modules.decimal import decode_decimal
-    from modules.braille import ascii, braille
+    from modules.braille import ascii, braille, brailles
 
 except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
@@ -68,7 +68,10 @@ while True:
                     help("braille-to-string", "braille string")
                 else:
                     try:
-                        message("+", ascii(" ".join(argv[1:])))
+                        if "".join(argv[1:]) not in brailles:
+                            message("!", "Only Takes Braille Codes")
+                        else:
+                            message("+", ascii(" ".join(argv[1:])))
                     except ValueError:
                         message("!", "A Char Is Not Registered")
                     except Exception as e:
