@@ -30,6 +30,7 @@ try:
     from modules.binary import decode_binary
     from modules.reverse import reverse_string
     from modules.decimal import decode_decimal
+    from modules.bacon import decode_bacon
 
 except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
@@ -43,6 +44,20 @@ while True:
         cmd = input(red("crypted") + gray(" » "))
 
         if cmd != "":
+
+            # DECIMAL
+            if cmd.split()[0] == "bacon-decode":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("bacon-decode", "bacon string")
+                else:
+                    try:
+                        message("+", decode_bacon(argv[1].lower()))
+                    except ValueError:
+                        message("!", "Please Provide Real Bacon Ciphers")
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
 
             # DECIMAL
             if cmd.split()[0] == "decimal-convert":
