@@ -165,10 +165,10 @@ while True:
                 
                 else:
                     try:
-                        message("+", decode_hex(argv[1]))
+                        message("+", decode_hex("".join(argv[1:])))
                     except ValueError:
                         message("!", "Doesn't Look Like Hex")
-                        message("!", red("Format: ") + gray("41414141"))
+                        message("!", red("Format: ") + gray("41 41 41 41"))
                     except Exception as e:
                         print(e.with_traceback())
 
