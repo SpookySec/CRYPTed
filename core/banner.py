@@ -17,7 +17,9 @@ banner_text = f"""
 {red("╚██████╗") + gray(r" /_/   |__, / .___/|__/|___/|__,_/   ")}
 {red(" ╚═════╝") + gray(r"    /____/_/                         ")}
 {"                                     " + message("@", red("spooky_sec"))}
-{"                                     " + message("v", red("1.0.0"))}
+{"                                     " + message("@", red("cloasies"))}
+{"                                     " + message("@", red("rip.meep"))}
+{"                                     " + message("v", red("1.3.8"))}
 \n"""
 
 def banner(amount):

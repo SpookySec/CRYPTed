@@ -29,7 +29,7 @@ class OnlineHashCrack(object):
 		if len(t) == 0 or "CODE ERREUR : " in t:
 			return False
 
-		self.plaintext = t[:-1]
+		self.plaintext = t.strip()
 
 		return True
 
