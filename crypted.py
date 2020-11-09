@@ -31,12 +31,13 @@ try:
     from modules.reverse import reverse_string
     from modules.decimal import decode_decimal
     from modules.bacon import decode_bacon
+    from modules import cracker
 
 except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
     exit(1)
 
-banner(0.003)
+banner(0.001)
 
 while True:
     try:
@@ -44,6 +45,24 @@ while True:
         cmd = input(red("crypted") + gray(" » "))
 
         if cmd != "":
+
+            # CRACK HASH
+            if cmd.split()[0] == "crack":
+                argv = cmd.split()
+                
+                try:
+                    c = cracker.OnlineHashCrack(argv[1])
+                    success = c.Crack()
+
+                    if not success:
+                        message("!", "Couldn't Crack The Hash!")
+
+                    else:
+                        message("+", "Successfully Cracked!")
+                        message("+", "Hash: {}".format(c.hash))
+                        message("+", "Plain: {}".format(c.plaintext))
+                except:
+                    message("!", "An Unknown Error Has Occurred!")
 
             # DECIMAL
             if cmd.split()[0] == "bacon-decode":
@@ -164,11 +183,11 @@ while True:
                 argv = cmd.split()
 
                 if len(argv) < 3:
-                    print(gray("[") + red("!") + gray("] ") + red("vigenere") + " " + gray("<") + red("key") + gray(">")+ " " + gray("<") + red("ciphered text") + gray(">"))
+                    print(gray("[") + red("!") + gray("] ") + red("vigenere") + " " + gray("<") + red("ciphered text") + gray(">")+ " " + gray("<") + red("key") + gray(">"))
 
                 else:
                     try:
-                        message("+", decode_vigenere(argv[2], argv[1]))
+                        message("+", decode_vigenere(argv[1], argv[2]))
                     except:
                         message("!", "An Unknown Error Has Occurred!")
             # DECODE HEX
