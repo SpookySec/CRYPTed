@@ -63,8 +63,8 @@ while True:
 
                         else:
                             message("+", "Successfully Cracked!")
-                            message("+", "Hash: {}".format(c.hash))
-                            message("+", "Plain: {}".format(c.plaintext))
+                            message("+", red("Hash ") + gray(":{}").format(c.hash))
+                            message("+", red("Plain") + gray(":{}").format(c.plaintext))
                     except:
                         message("!", "An Unknown Error Has Occurred!")
 
