@@ -58,7 +58,7 @@ while True:
                         c = cracker.OnlineHashCrack(argv[1])
                         success = c.Crack()
 
-                        if not not success:
+                        if not success:
                             message("!", "Couldn't Crack The Hash!")
 
                         else:
