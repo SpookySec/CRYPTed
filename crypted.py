@@ -50,19 +50,23 @@ while True:
             if cmd.split()[0] == "crack":
                 argv = cmd.split()
                 
-                try:
-                    c = cracker.OnlineHashCrack(argv[1])
-                    success = c.Crack()
+                if len(argv) < 2:
+                    help("crack", "hash")
 
-                    if not success:
-                        message("!", "Couldn't Crack The Hash!")
+                else:
+                    try:
+                        c = cracker.OnlineHashCrack(argv[1])
+                        success = c.Crack()
 
-                    else:
-                        message("+", "Successfully Cracked!")
-                        message("+", "Hash: {}".format(c.hash))
-                        message("+", "Plain: {}".format(c.plaintext))
-                except:
-                    message("!", "An Unknown Error Has Occurred!")
+                        if not success:
+                            message("!", "Couldn't Crack The Hash!")
+
+                        else:
+                            message("+", "Successfully Cracked!")
+                            message("+", "Hash: {}".format(c.hash))
+                            message("+", "Plain: {}".format(c.plaintext))
+                    except:
+                        message("!", "An Unknown Error Has Occurred!")
 
             # DECIMAL
             if cmd.split()[0] == "bacon-decode":

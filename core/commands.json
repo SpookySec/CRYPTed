@@ -6,6 +6,7 @@
     {"description": "prints this list", "name": "help"},
     {"description": "exits CRYPTed", "name": "exit"},
     {"description": "identifies the type of a hash", "name": "hash-identifier"},
+    {"description": "attempts to crack a given hash using an API", "name": "crack"},
     {"description": "decodes base32", "name": "base32-decode"},
     {"description": "decodes base58", "name": "base58-decode"},
     {"description": "decodes base64", "name": "base64-decode"},
