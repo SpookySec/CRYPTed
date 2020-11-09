@@ -14,7 +14,7 @@ try:
     from core.help import help_message
 
     import base64
-    
+
     # MODULES
     from modules import hash_id
     from modules.bases import debase32, debase58, debase64
@@ -49,7 +49,7 @@ while True:
             # CRACK HASH
             if cmd.split()[0] == "crack":
                 argv = cmd.split()
-                
+
                 if len(argv) < 2:
                     help("crack", "hash")
 
@@ -66,7 +66,7 @@ while True:
                         elif len(hash) == 128:
                             hashtype = "sha512"
                         else:
-                            message("!", "Couldn't Identify Hash")
+                            message("!", red("Couldn't Identify Hash"))
                             message("+", red("Supported Types") + gray(": md5, sha256, sha384, sha512"))
                             attempt = False
 
@@ -75,12 +75,13 @@ while True:
                             success = c.Crack()
 
                             if not success:
-                                message("!", "Couldn't Crack The Hash!")
+                                message("!", red("Couldn't Crack The Hash!"))
 
                             else:
-                                message("+", "Successfully Cracked!")
-                                message("+", red("Hash ") + gray(": {}").format(c.hash))
-                                message("+", red("Plain") + gray(": {}").format(c.plaintext))
+                                message("+", red("Successfully Cracked!"))
+                                message("+", red("Type  ") + gray(": {}").format(hashtype))
+                                message("+", red("Hash  ") + gray(": {}").format(c.hash))
+                                message("+", red("Plain ") + gray(": {}").format(c.plaintext))
                     except:
                         message("!", "An Unknown Error Has Occurred!")
 
@@ -123,7 +124,7 @@ while True:
                         message("+", reverse_string(argv[1]))
                     except:
                         message("!", "An Unknown Error Has Occurred!")
-                        
+
             # NET BIOS
             if cmd.split()[0] == "binary-convert":
                 argv = cmd.split()
@@ -187,7 +188,7 @@ while True:
                             message("+", letter)
                     except:
                         message("!", "An Unknown Error Has Occrred!")
-            
+
 
             # URL DECODE
             if cmd.split()[0] == "url-decode":
@@ -216,7 +217,7 @@ while True:
 
                 if len(argv) < 2:
                     help("hex-decode", "hex string")
-                
+
                 else:
                     try:
                         message("+", decode_hex("".join(argv[1:])))
@@ -235,17 +236,17 @@ while True:
                 else:
                     hashid = hash_id.HashID()
                     results = hash_id.parseHashes(hashid.identifyHash(argv[1]))
-                    
+
                     if len(results) > 0:
                         count = 0
-                        
+
                         for hashtype in results:
                             count += 1
                             message(count, hashtype)
-                    
+
                     else:
                         message("!", "No Hashes Matched!")
-            
+
             # BASE 32
             if cmd.split()[0] == "base32-decode":
                 argv = cmd.split()
@@ -260,7 +261,7 @@ while True:
                         message("!", "Doesn't Look Like base32")
                     except:
                         message("!", "An Unknown Error Has Occurred!")
-            
+
             # BASE 58
             if cmd.split()[0] == "base58-decode":
                 argv = cmd.split()
@@ -275,7 +276,7 @@ while True:
                         message("!", "Doesn't Look Like base58")
                     except:
                         message("!", "An Unknown Error Has Occurred!")
-            
+
             # BASE 64
             if cmd.split()[0] == "base64-decode":
                 argv = cmd.split()
@@ -297,13 +298,13 @@ while True:
 
                 if len(argv) < 2:
                     help("rot13-decode", "shifted string")
-                
+
                 else:
                     try:
                         message("+", rot13(argv[1]))
                     except:
                         message("!", "An Unknown Error Has Occurred!")
-            
+
             # ROT47
             if cmd.split()[0] == "rot47-decode":
                 argv = cmd.split()
@@ -323,7 +324,7 @@ while True:
 
                 if len(argv) < 2:
                     help("morse-decode", "morse code")
-                
+
                 else:
                     try:
                         cipher = ""
@@ -339,7 +340,7 @@ while True:
                         print(e.with_traceback())
                         message("!", "An Unknown Error Has Occurred!")
                         message("*", red("Format") + gray(": .... . .-.. .-.. ---"))
-            
+
             # UTF-8
             if cmd.split()[0] == "utf-8-decode":
                 argv = cmd.split()
@@ -366,7 +367,7 @@ while True:
             # CLEAR
             if cmd.split()[0] == "clear":
                 os.system("clear")
-            
+
             # RESET
             if cmd.split()[0] == "reset":
                 HistoryClear()
@@ -374,7 +375,7 @@ while True:
             # BANNER
             if cmd.split()[0] == "banner":
                 banner(0)
-            
+
             # EXIT
             if cmd.split()[0] == "exit":
                 message("~", "Bye :3")
@@ -383,12 +384,13 @@ while True:
             # COMMAND NOT FOUND
             if cmd.split()[0] not in commands:
                 message("!", gray("Use \"") + red("help") + gray("\" To List Available Commands"))
-                    
+
 
     except KeyboardInterrupt:
         print()
         message("!", "Please Use \"" + red("exit") + gray("\" To Exit"))
         continue
 
-    except Exception as e:    
+    except Exception as e:
+        print(red("[!] IF YOU'RE SEEING THIS PLEAAASE SEND ME A MESSAGE ON MY INSTAGRAM"))
         print(e.with_traceback())
