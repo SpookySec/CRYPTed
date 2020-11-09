@@ -5,7 +5,7 @@
     {"description": "prints the most beautiful banner ever", "name": "banner"},
     {"description": "prints this list", "name": "help"},
     {"description": "exits CRYPTed", "name": "exit"},
-    {"description": "identifies the type of a hash", "name": "hash-identifier"},
+    {"description": "identifies the type of a hash", "name": "hash-identify"},
     {"description": "attempts to crack a given hash using an API", "name": "crack"},
     {"description": "decodes base32", "name": "base32-decode"},
     {"description": "decodes base58", "name": "base58-decode"},

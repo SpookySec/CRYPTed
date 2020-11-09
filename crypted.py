@@ -55,16 +55,32 @@ while True:
 
                 else:
                     try:
-                        c = cracker.OnlineHashCrack(argv[1])
-                        success = c.Crack()
-
-                        if not success:
-                            message("!", "Couldn't Crack The Hash!")
-
+                        attempt = True
+                        hash = argv[1]
+                        if len(hash) == 32:
+                            hashtype = "md5"
+                        elif len(hash) == 64:
+                            hashtype = "sha256"
+                        elif len(hash) == 96:
+                            hashtype = "sha384"
+                        elif len(hash) == 128:
+                            hashtype = "sha512"
                         else:
-                            message("+", "Successfully Cracked!")
-                            message("+", red("Hash ") + gray(":{} ").format(c.hash))
-                            message("+", red("Plain") + gray(":{} ").format(c.plaintext))
+                            message("!", "Couldn't Identify Hash")
+                            message("+", red("Supported Types") + gray(": md5, sha256, sha384, sha512"))
+                            attempt = False
+
+                        if attempt:
+                            c = cracker.OnlineHashCrack(hash, hashtype=hashtype)
+                            success = c.Crack()
+
+                            if not success:
+                                message("!", "Couldn't Crack The Hash!")
+
+                            else:
+                                message("+", "Successfully Cracked!")
+                                message("+", red("Hash ") + gray(": {}").format(c.hash))
+                                message("+", red("Plain") + gray(": {}").format(c.plaintext))
                     except:
                         message("!", "An Unknown Error Has Occurred!")
 
@@ -211,11 +227,11 @@ while True:
                         print(e.with_traceback())
 
             # HASH-ID
-            if cmd.split()[0] == "hash-identifier":
+            if cmd.split()[0] == "hash-identify":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("hash-identifier", "hash")
+                    help("hash-identify", "hash")
                 else:
                     hashid = hash_id.HashID()
                     results = hash_id.parseHashes(hashid.identifyHash(argv[1]))
