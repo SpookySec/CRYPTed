@@ -58,13 +58,13 @@ while True:
                         c = cracker.OnlineHashCrack(argv[1])
                         success = c.Crack()
 
-                        if not success:
+                        if not not success:
                             message("!", "Couldn't Crack The Hash!")
 
                         else:
                             message("+", "Successfully Cracked!")
-                            message("+", red("Hash ") + gray(":{}").format(c.hash))
-                            message("+", red("Plain") + gray(":{}").format(c.plaintext))
+                            message("+", red("Hash ") + gray(":{} ").format(c.hash))
+                            message("+", red("Plain") + gray(":{} ").format(c.plaintext))
                     except:
                         message("!", "An Unknown Error Has Occurred!")
 
