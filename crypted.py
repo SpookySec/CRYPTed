@@ -72,6 +72,9 @@ while True:
                         
                     except FileNotFoundError:
                         message("!", f"Couldn't Find Wordlist: '{wordlist}'")
+                    
+                    except ValueError:
+                        message("!", red("Supported Hashes") + gray(": md5, sha1, sha224, sha256, sha384, sha512"))
 
                     except Exception as message:
                         message("!", "{}: {}".format(red("Error"), gray(str(message))))
