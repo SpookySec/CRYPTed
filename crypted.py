@@ -56,31 +56,39 @@ while True:
 
                 else:
                     hash = str(argv[1]).lower()
-                    PathComplete()
-                    wordlist = input(gray("[") + red("+") + gray("] ") + gray("Path To Wordlist (use TAB): "))
-                    try:
-                        d = easycracker.DictionaryAttack(hash, wordlist)
-                        d.start()
+                    hash_length = len(hash)
+                    supported_hash_lengths = [32, 40, 56, 64, 96, 128]
 
-                        if d.cracked:
-                                message("*", red("Successfully Cracked!"))
-                                message("+", red("Type ") + gray(": {}").format(d.hash_type.lower()))
-                                message("+", red("Hash ") + gray(": {}").format(d.hash_value))
-                                message("+", red("Plain") + gray(": {}").format(d.plaintext.decode()))
-                        else:
-                            message("!", "Couldn't Crack The Hash")
-
-                    except FileNotFoundError:
-                        message("!", f"Couldn't Find Wordlist: '{wordlist}'")
-
-                    except ValueError:
+                    if hash_length not in supported_hash_lengths:
+                        message("!", "Couldn't Identify Hash")
                         message("!", red("Supported Hashes") + gray(": md5, sha1, sha224, sha256, sha384, sha512"))
 
-                    except Exception as message:
-                        message("!", "{}: {}".format(red("Error"), gray(str(message))))
+                    else:
+                        PathComplete()
+                        wordlist = input(gray("[") + red("+") + gray("] ") + gray("Path To Wordlist (use TAB): "))
+                        try:
+                            d = easycracker.DictionaryAttack(hash, wordlist)
+                            d.start()
 
-                    HistoryClear()
-                    CommandComplete()
+                            if d.cracked:
+                                    message("*", red("Successfully Cracked!"))
+                                    message("+", red("Type ") + gray(": {}").format(d.hash_type.lower()))
+                                    message("+", red("Hash ") + gray(": {}").format(d.hash_value))
+                                    message("+", red("Plain") + gray(": {}").format(d.plaintext.decode()))
+                            else:
+                                message("!", "Couldn't Crack The Hash")
+
+                        except FileNotFoundError:
+                            message("!", f"Couldn't Find Wordlist: '{wordlist}'")
+
+                        except ValueError:
+                            message("!", red("Supported Hashes") + gray(": md5, sha1, sha224, sha256, sha384, sha512"))
+
+                        except Exception as message:
+                            message("!", "{}: {}".format(red("Error"), gray(str(message))))
+
+                        HistoryClear()
+                        CommandComplete()
 
             # CRACK HASH ONLINE
             if cmd.split()[0] == "crack-online":
