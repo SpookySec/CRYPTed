@@ -64,24 +64,24 @@ while True:
 
                         if d.cracked:
                                 message("*", red("Successfully Cracked!"))
-                                message("+", red("Type ") + gray(": {}").format(d.hash_type))
+                                message("+", red("Type ") + gray(": {}").format(d.hash_type.lower()))
                                 message("+", red("Hash ") + gray(": {}").format(d.hash_value))
                                 message("+", red("Plain") + gray(": {}").format(d.plaintext.decode()))
                         else:
                             message("!", "Couldn't Crack The Hash")
-                        
+
                     except FileNotFoundError:
                         message("!", f"Couldn't Find Wordlist: '{wordlist}'")
-                    
+
                     except ValueError:
                         message("!", red("Supported Hashes") + gray(": md5, sha1, sha224, sha256, sha384, sha512"))
 
                     except Exception as message:
                         message("!", "{}: {}".format(red("Error"), gray(str(message))))
-                    
+
                     HistoryClear()
                     CommandComplete()
-                        
+
             # CRACK HASH ONLINE
             if cmd.split()[0] == "crack-online":
                 argv = cmd.split()
