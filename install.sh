@@ -7,4 +7,16 @@ fi
 clear
 echo "[*] INSTALLING NOW..."
 sudo apt update
+
+sudo apt-get install libssl-dev
+sudo apt-get install python3 python3-pip
 pip3 install -r requirements.txt
+
+sudo git clone https://github.com/ripmeep/easycracker && cd easycracker
+
+python3 setup.py build
+python3 setup.py install
+
+cd ../ && sudo rm -rf easycracker
+clear
+echo "[*] FINISHED INSTALLING!"

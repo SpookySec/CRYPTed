@@ -14,6 +14,7 @@ try:
     from core.help import help_message
 
     import base64
+    import easycracker
 
     # MODULES
     from modules import hash_id
@@ -46,12 +47,44 @@ while True:
 
         if cmd != "":
 
-            # CRACK HASH
-            if cmd.split()[0] == "crack-hash":
+            # CRACK HASH LOCALLY
+            if cmd.split()[0] == "crack-local":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("crack-hash", "hash")
+                    help("crack-local", "hash")
+
+                else:
+                    hash = str(argv[1]).lower()
+                    PathComplete()
+                    wordlist = input(gray("[") + red("+") + gray("] ") + gray("Path To Wordlist (use TAB): "))
+                    try:
+                        d = easycracker.DictionaryAttack(hash, wordlist)
+                        d.start()
+
+                        if d.cracked:
+                                message("*", red("Successfully Cracked!"))
+                                message("+", red("Type ") + gray(": {}").format(d.hash_type))
+                                message("+", red("Hash ") + gray(": {}").format(d.hash_value))
+                                message("+", red("Plain") + gray(": {}").format(d.plaintext.decode()))
+                        else:
+                            message("!", "Couldn't Crack The Hash")
+                        
+                    except FileNotFoundError:
+                        message("!", f"Couldn't Find Wordlist: '{wordlist}'")
+
+                    except Exception as message:
+                        message("!", "{}: {}".format(red("Error"), gray(str(message))))
+                    
+                    HistoryClear()
+                    CommandComplete()
+                        
+            # CRACK HASH ONLINE
+            if cmd.split()[0] == "crack-online":
+                argv = cmd.split()
+
+                if len(argv) < 2:
+                    help("crack-online", "hash")
 
                 else:
                     try:
@@ -67,7 +100,7 @@ while True:
                             hashtype = "sha512"
                         else:
                             message("!", red("Couldn't Identify Hash"))
-                            message("+", red("Supported Types") + gray(": md5, sha256, sha384, sha512"))
+                            message("*", red("Supported Types") + gray(": md5, sha256, sha384, sha512"))
                             attempt = False
 
                         if attempt:
@@ -78,7 +111,7 @@ while True:
                                 message("!", red("Couldn't Crack The Hash!"))
 
                             else:
-                                message("+", red("Successfully Cracked!"))
+                                message("*", red("Successfully Cracked!"))
                                 message("+", red("Type  ") + gray(": {}").format(hashtype))
                                 message("+", red("Hash  ") + gray(": {}").format(c.hash))
                                 message("+", red("Plain ") + gray(": {}").format(c.plaintext))
