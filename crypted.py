@@ -129,7 +129,7 @@ while True:
                     except:
                         message("!", "An Unknown Error Has Occurred!")
 
-            # DECIMAL
+            # BACON
             if cmd.split()[0] == "bacon-decode":
                 argv = cmd.split()
 
@@ -137,10 +137,14 @@ while True:
                     help("bacon-decode", "bacon string")
                 else:
                     try:
-                        message("+", decode_bacon(argv[1].lower()))
+                        message("+", decode_bacon(argv[1:]))
                     except ValueError:
                         message("!", "Please Provide Real Bacon Ciphers")
-                    except:
+                        message("*", "Only Accepts A/B Translation")
+                        message("*", "With Complete Alphabet")
+                        message("*", red("Format") + gray(": AABBB ABAAA"))
+                    except Exception as e:
+                        print(e.with_traceback("idk"))
                         message("!", "An Unknown Error Has Occurred!")
 
             # DECIMAL
