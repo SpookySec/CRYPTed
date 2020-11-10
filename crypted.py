@@ -56,7 +56,7 @@ while True:
                 else:
                     try:
                         attempt = True
-                        hash = argv[1]
+                        hash = argv[1].lower()
                         if len(hash) == 32:
                             hashtype = "md5"
                         elif len(hash) == 64:
