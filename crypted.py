@@ -47,11 +47,11 @@ while True:
         if cmd != "":
 
             # CRACK HASH
-            if cmd.split()[0] == "crack":
+            if cmd.split()[0] == "crack-hash":
                 argv = cmd.split()
 
                 if len(argv) < 2:
-                    help("crack", "hash")
+                    help("crack-hash", "hash")
 
                 else:
                     try:

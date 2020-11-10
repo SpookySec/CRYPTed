@@ -1,1 +1,0 @@
-add hash type in "crack"
