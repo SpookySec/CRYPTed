@@ -10,3 +10,6 @@ def message(symbol, message):
 def help(command, requirement):
     # print(gray("[") + red("!") + gray("] ") + gray("Command Error!"))
     print(gray("[") + red("!") + gray("] ") + red(command) + " " + gray("<") + red(requirement) + gray(">"))
+
+def yesno():
+    return gray("[") + red("Y") + gray("/") + red("N") + gray("]")

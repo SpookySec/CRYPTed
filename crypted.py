@@ -9,7 +9,7 @@ if platform.system() != "Linux":
 try:
     # CORE
     from core.banner import banner
-    from core.colors import red, gray, message, help
+    from core.colors import red, gray, message, help, yesno
     from core.cmd_cmplt import PathComplete, CommandComplete, HistoryClear, commands
     from core.help import help_message
 
@@ -38,7 +38,7 @@ except ModuleNotFoundError:
     message("!", "Please Run 'install.sh'!")
     exit(1)
 
-banner(0.001)
+banner(0.0005)
 
 while True:
     try:
@@ -46,6 +46,57 @@ while True:
         cmd = input(red("crypted") + gray(" » "))
 
         if cmd != "":
+
+            # RAINBOW TABLES
+            if cmd.split()[0] == "rainbow-init":
+                PathComplete()
+                wordlist = input(gray("[") + red("+") + gray("] ") + gray("Path To Wordlist: "))
+                hash_funcs = []
+
+                hash_options = {
+                    "md4": False,
+                    "md5": False,
+                    "sha1": False,
+                    "sha224": False,
+                    "sha256": False,
+                    "sha384": False,
+                    "sha512": False,
+                }
+
+                for hash in hash_options.keys():
+                    hash_fmt = "{:<15}".format(red(hash))
+                    option = input(hash_fmt + " " + yesno() + gray(": ")).lower()
+
+                    if option == "n":
+                        continue
+
+                    elif option == "y":
+                        hash_options[hash] = True
+                    
+                    continue
+                    
+                message("*", "Checking Input")
+                    
+                for hash in hash_options:
+                    message(hash, "{:>5}".format("Yes" if hash_options[hash] else "No"))
+                
+                while True:
+                    confirm = input(gray("Is This Information Correct? ") + yesno() + gray(": ")).lower()
+
+                    if confirm == "y":
+                        message("+", "Generating Database")
+                        # Generate
+                        break
+
+                    elif confirm == "n":
+                        message("!", "Aborting")
+                        break
+
+                    else:
+                        pass
+                
+                HistoryClear()
+
 
             # CRACK HASH LOCALLY
             if cmd.split()[0] == "crack-local":
@@ -65,7 +116,7 @@ while True:
 
                     else:
                         PathComplete()
-                        wordlist = input(gray("[") + red("+") + gray("] ") + gray("Path To Wordlist (use TAB): "))
+                        wordlist = input(gray("[") + red("+") + gray("] ") + gray("Path To Wordlist: "))
                         try:
                             d = easycracker.DictionaryAttack(hash, wordlist)
                             d.start()
