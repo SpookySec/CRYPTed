@@ -49,6 +49,8 @@ while True:
 
             # RAINBOW TABLES
             if cmd.split()[0] == "rainbow-init":
+                message("+", "Coming soon...")
+                """
                 PathComplete()
                 wordlist = input(gray("[") + red("+") + gray("] ") + gray("Path To Wordlist: "))
                 hash_funcs = []
@@ -96,6 +98,7 @@ while True:
                         pass
                 
                 HistoryClear()
+            """
 
 
             # CRACK HASH LOCALLY

@@ -14,8 +14,7 @@ pip3 install -r requirements.txt
 
 sudo git clone https://github.com/ripmeep/easycracker && cd easycracker
 
-python3 setup.py build
-python3 setup.py install
+sudo bash install.sh
 
 cd ../ && sudo rm -rf easycracker
 clear
