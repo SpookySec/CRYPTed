@@ -9,7 +9,7 @@
     {"description": "attempts to crack a given hash using an online API", "name": "crack-online"},
     {"description": "attempts to crack a given hash using a local wordlist", "name": "crack-local"},
     {"description": "generates a rainbow tables database to use with rainbow-crack", "name": "rainbow-init"},
-    {"description": "uses rainbow tables to attempt and crack a partial or full hash", "name": "rainbow-crack"},
+    {"description": "uses rainbow tables to attempt and crack a hash", "name": "rainbow-crack"},
     {"description": "decodes base32", "name": "base32-decode"},
     {"description": "decodes base58", "name": "base58-decode"},
     {"description": "decodes base64", "name": "base64-decode"},

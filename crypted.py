@@ -47,6 +47,9 @@ while True:
 
         if cmd != "":
 
+            if cmd.split()[0] == "rainbow-crack":
+                message("+", "Coming soon...")
+
             # RAINBOW TABLES
             if cmd.split()[0] == "rainbow-init":
                 message("+", "Coming soon...")
